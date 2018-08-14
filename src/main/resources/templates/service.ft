@@ -20,4 +20,5 @@ public interface ${modelName}Service {
 
     Object delete(${modelName} ${modelName?uncap_first}, UserDTO user);
 
+    ${modelName} getOne(${modelName} ${modelName?uncap_first});
 }

@@ -115,4 +115,9 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
             return Res.suc();
         }
     }
+
+    @Override
+    public ${modelName} getOne(${modelName} ${modelName?uncap_first}){
+        return ${dao}.getOne(${modelName?uncap_first});
+    }
 }
