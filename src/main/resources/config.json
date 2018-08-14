@@ -6,8 +6,8 @@
 		"password":"root"
 	},
 	"tableMapping":{
-		"t_dict_part_brand":{
-			"name":"DictPartBrand",
+		"t_part_brand":{
+			"name":"PartBrand",
 			"remark":"系统资源模块"
 		}
 	},

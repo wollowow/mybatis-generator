@@ -70,7 +70,7 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
 
     @Override
     public Object update(${modelName} ${modelName?uncap_first}, UserDTO user) {
-        ${modelName} db${modelName?uncap_first} = ${dao}.getOne(${modelName?uncap_first}.getId());
+        ${modelName} db${modelName?uncap_first} = ${dao}.getOneById(${modelName?uncap_first}.getId());
         if (db${modelName?uncap_first} == null) {
             return Res.err("修改失败");
         }
@@ -94,7 +94,7 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
 
     @Override
     public Object delete(${modelName} ${modelName?uncap_first}, UserDTO user) {
-        ${modelName} db${modelName?uncap_first} = ${dao}.getOne(${modelName?uncap_first}.getId());
+        ${modelName} db${modelName?uncap_first} = ${dao}.getOneById(${modelName?uncap_first}.getId());
         if (db${modelName?uncap_first} == null) {
             return Res.err("删除失败");
         }

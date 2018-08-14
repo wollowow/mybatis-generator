@@ -11,9 +11,13 @@
         <where>
             1 = 1
             <#list columns as item>
-              <if test="${item.fieldName} != null and ${item.fieldName} != ''">
-                  AND ${item.name} = ${"#"}{${item.fieldName}}
-              </if>
+            <#if item.type == "VARCHAR" || item.type == "CHAR" || item.type == "TEXT" || item.type=="">
+            <if test="${item.fieldName} != null and ${item.fieldName} != ''" >
+            <#else>
+            <if test="${item.fieldName} != null" >
+            </#if>
+              AND ${item.name} = ${"#"}{${item.fieldName}}
+            </if>
             </#list>
         </where>
     </sql>
@@ -26,13 +30,22 @@
         ORDER BY id DESC
     </select>
 
-    <select id="getOne" resultType="${modelName}" parameterType="java.lang.Long">
+    <select id="getOneById" resultType="${modelName}" parameterType="java.lang.Long">
         SELECT
         <include refid="column_all"/>
         FROM ${tableName}
         WHERE
         id = ${"#"}{id}
         AND del_flag = 0
+        limit 0,1
+    </select>
+
+    <select id="getOne" resultType="${modelName}" parameterType="${modelName}">
+        SELECT
+        <include refid="column_all"/>
+        FROM ${tableName}
+        <include refid="Where_Clause"/>
+        limit 0,1
     </select>
 
     <insert id="insert" parameterType="${modelName}" >
@@ -49,14 +62,18 @@
         <set>
             <#list columns as item>
                 <#if item.fieldName != "version">
-                    <if test="${item.fieldName} != null and ${item.fieldName} != ''" >
-                        ${item.name} = ${"#"}{${item.fieldName},jdbcType=${item.type}},
-                    </if>
+                    <#if item.type == "VARCHAR" || item.type == "CHAR" || item.type == "TEXT" || item.type=="">
+            <if test="${item.fieldName} != null and ${item.fieldName} != ''" >
+                      <#else>
+            <if test="${item.fieldName} != null" >
+                    </#if>
+                ${item.name} = ${"#"}{${item.fieldName},jdbcType=${item.type}},
+            </if>
                  </#if>
             </#list>
                 version = version + 1
         </set>
-        where ${idField} = ${"#"}{${idFieldName}
+        where ${idField} = ${"#"}{${idFieldName}}
         AND version = ${"#"}{version}
     </update>
 

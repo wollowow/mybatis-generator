@@ -9,11 +9,13 @@ import java.util.List;
 public interface BaseDao<T> {
     List<T> getList(T model);
 
-    T getOne(Long id);
+    T getOneById(Long id);
 
     int insert(T model);
 
     int update(T model);
 
     int delete(T model);
+
+    T getOne(T model);
 }
