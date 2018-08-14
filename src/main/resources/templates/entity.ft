@@ -2,6 +2,7 @@ package ${package}.entity;
 
 import java.io.Serializable;
 import com.hshc.ws.util.ContrastField;
+import com.hshc.ws.util.PageParamVo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.ibatis.type.Alias;
@@ -19,7 +20,7 @@ import ${p};
 @Data
 @NoArgsConstructor
 @Alias("${modelName}")
-public class ${modelName} implements Serializable {
+public class ${modelName} extends PageParamVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
