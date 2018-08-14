@@ -6,9 +6,9 @@
 		"password":"root"
 	},
 	"tableMapping":{
-		"t_part_brand":{
-			"name":"PartBrand",
-			"remark":"系统资源模块"
+		"t_part_category":{
+			"name":"PartCategory",
+			"remark":"配件分类"
 		}
 	},
 	"author":"zhengyi.wang",
@@ -21,12 +21,12 @@
 		"template":"entity.ft",
 		"outSuffix":".java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	},{
 		"template":"dao.ft",
 		"outSuffix":"Dao.java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	},{
 		"template":"mapper.xml.ft",
 		"outSuffix":"Mapper.xml",
@@ -35,27 +35,27 @@
 		"template":"service.ft",
 		"outSuffix":"Service.java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	},{
 		"template":"serviceImpl.ft",
 		"outSuffix":"ServiceImpl.java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	},{
 		"template":"controller.ft",
 		"outSuffix":"Controller.java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	},{
 		"template":"daoImpl.ft",
 		"outSuffix":"DaoImpl.java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	},{
 		"template":"enum.ft",
 		"outSuffix":"StatEnum.java",
 		"outPath":"com",
-		"project":"test"
+		"project":"hshcws"
 	}
 	]
 }

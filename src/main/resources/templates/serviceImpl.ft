@@ -44,8 +44,8 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
     @Override
     public Object insert(${modelName} ${modelName?uncap_first}, UserDTO user) {
         Date current = new Date();
-        Long id = UniqueCodeUtils.getUniqueCode(UniqueCodeUtils.BUSTYPE_${modelName}_ID);
-        String code = UniqueCodeUtils.getBussIncrCode(UniqueCodeUtils.BUSTYPE_${modelName}_CODE);
+        Long id = UniqueCodeUtils.getUniqueCode(UniqueCodeUtils.BUSTYPE_${modelName?upper_case}_ID);
+        String code = UniqueCodeUtils.getBussIncrCode(UniqueCodeUtils.BUSTYPE_${modelName?upper_case}_CODE);
 
         ${modelName?uncap_first}.setId(id);
         ${modelName?uncap_first}.setCreateTime(current);
@@ -62,7 +62,7 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
             return Res.err("新增失败");
         } else {
             LogUtil.getLog(${modelName}ServiceImpl.class).info("新增成功[id={}]", ${modelName?uncap_first}.getId());
-            OperationUtils.save(${modelName?uncap_first}.getId(), BussTypeEnum.${modelName}, user, OperationTypeEnum.CREATE, current,
+            OperationUtils.save(${modelName?uncap_first}.getId(), BussTypeEnum.${modelName?upper_case}, user, OperationTypeEnum.CREATE, current,
             ${modelName}StatEnum.SUBMIT);
             return Res.suc();
         }
@@ -86,7 +86,7 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
             return Res.err("修改失败");
         } else {
             LogUtil.getLog(${modelName}ServiceImpl.class).info("修改成功[id={}]", ${modelName?uncap_first}.getId());
-            OperationUtils.save(${modelName?uncap_first}.getId(), BussTypeEnum.${modelName}, user, OperationTypeEnum.UPDATE, current,
+            OperationUtils.save(${modelName?uncap_first}.getId(), BussTypeEnum.${modelName?upper_case}, user, OperationTypeEnum.UPDATE, current,
             ${modelName}StatEnum.SUBMIT, db${modelName?uncap_first}, ${modelName?uncap_first});
             return Res.suc();
         }
@@ -110,7 +110,7 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
             return Res.err("删除失败");
         } else {
             LogUtil.getLog(${modelName}ServiceImpl.class).info("删除成功[id={}]", ${modelName?uncap_first}.getId());
-            OperationUtils.save(${modelName?uncap_first}.getId(), BussTypeEnum.${modelName}, user, OperationTypeEnum.DELETE, current,
+            OperationUtils.save(${modelName?uncap_first}.getId(), BussTypeEnum.${modelName?upper_case}, user, OperationTypeEnum.DELETE, current,
             ${modelName}StatEnum.DELETE);
             return Res.suc();
         }
