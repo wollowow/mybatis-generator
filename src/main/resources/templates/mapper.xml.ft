@@ -36,7 +36,6 @@
         FROM ${tableName}
         WHERE
         id = ${"#"}{id}
-        AND del_flag = 0
         limit 0,1
     </select>
 
