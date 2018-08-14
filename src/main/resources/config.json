@@ -1,13 +1,13 @@
 {
 	"package":"com.hshc.ws",
 	"jdbc":{
-		"url":"jdbc:mysql://192.168.100.30:3306/hshc_ics?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull",
-		"username":"test",
-		"password":"HSHCtest#2018"
+		"url":"jdbc:mysql://127.0.0.1:3306/hshc_ws?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull",
+		"username":"root",
+		"password":"root"
 	},
 	"tableMapping":{
-		"t_cancellation":{
-			"name":"Cancellation",
+		"t_dict_part_brand":{
+			"name":"DictPartBrand",
 			"remark":"系统资源模块"
 		}
 	},
