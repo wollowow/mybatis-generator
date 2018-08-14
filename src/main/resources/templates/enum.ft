@@ -9,8 +9,8 @@ import com.hshc.basetools.enums.ISEnum;
 **/
 public enum ${modelName}StatEnum implements ISEnum {
 
-
-    DELETE(0, "删除");
+    DELETE(0, "删除"),
+    CREATE(1, "已创建");
 
     private Integer code;
     private String  name;
