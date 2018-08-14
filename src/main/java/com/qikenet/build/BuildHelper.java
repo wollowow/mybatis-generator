@@ -144,7 +144,6 @@ public class BuildHelper {
 		String username = (String) jdbcMap.get("username");
 		String password = (String) jdbcMap.get("password");
 		String url = (String) jdbcMap.get("url");
-
 		String author = jsonObject.getString("author");
 
 		//输出目录根路径
@@ -171,15 +170,15 @@ public class BuildHelper {
 			Map<Object, Object> tableMap = new HashMap<Object, Object>();
 			tableMap.put("tableName", table);
 			tableMap.put("modelName", modelName);
-			StringBuffer requestUrl=new StringBuffer();
+			StringBuffer path=new StringBuffer();
 			char [] chars= modelName.toCharArray();
 			for (char c :chars ) {
 			    if(Character.isUpperCase(c)){
-			    	requestUrl.append("/");
+					path.append("/");
 				}
-				requestUrl.append(c);
+				path.append(c);
 			}
-			tableMap.put("requestUrl",requestUrl.toString().toLowerCase());
+			tableMap.put("path",path.toString().toLowerCase());
 
 			List<Map<Object, Object>> columns = new ArrayList<Map<Object, Object>>();
 

@@ -1,4 +1,4 @@
-${requestUrl}
+${path}
 <#list columns as item>
     <#assign str=";" >
     <#assign typeName=item.typeName?uncap_first >

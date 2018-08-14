@@ -45,13 +45,13 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
 
     @RequestMapping("index")
     public ModelAndView index(ModelAndView modelAndView) {
-        modelAndView.setViewName("/web/${modelName?uncap_first}/${modelName?uncap_first}List");
+        modelAndView.setViewName("/web${path}/list");
         return modelAndView;
     }
 
     @RequestMapping("historyPage")
     public ModelAndView historyPage(HttpServletRequest req, ModelAndView modelAndView) {
-        modelAndView.setViewName("/web/${modelName?uncap_first}/${modelName?uncap_first}History");
+        modelAndView.setViewName("/web${path}/history");
         return modelAndView;
     }
 
