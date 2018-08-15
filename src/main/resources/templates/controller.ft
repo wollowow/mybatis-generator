@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import com.hshc.ws.util.enums.DeleteStatEnum;
 
 import com.github.pagehelper.PageInfo;
 import ${package}.common.hbase.history.OperationHBaseClient;
@@ -138,6 +139,7 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
     @RequestMapping("list")
     @ResponseBody
     public Object getList(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+        ${modelName?uncap_first}.setDelFlag(DeleteStatEnum.NO.getCode());
         PageInfo pageInfo = new PageInfo<>(${service}.getList(${modelName?uncap_first}));
         pageInfo.setList(ExtFieldUtil.genConvertList(pageInfo.getList()));
         return pageInfo;
