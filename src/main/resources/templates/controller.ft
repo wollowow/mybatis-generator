@@ -34,7 +34,7 @@ import com.hshc.framework.redis.cmd.LockCmd;
 @RequestMapping("${modelName?uncap_first}")
 public class ${modelName}Controller{
 
-private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants.DEMO_LOCK_NAMESPACE);
+private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants.${lock}_LOCK_NAMESPACE);
 
     <#if modelName??>
         <#assign  lower= modelName?uncap_first >

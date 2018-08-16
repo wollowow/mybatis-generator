@@ -44,7 +44,6 @@
         <include refid="column_all"/>
         FROM ${tableName}
         <include refid="Where_Clause"/>
-        limit 0,1
     </select>
 
     <insert id="insert" parameterType="${modelName}" >

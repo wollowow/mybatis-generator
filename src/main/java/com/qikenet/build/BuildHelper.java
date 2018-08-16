@@ -40,7 +40,6 @@ public class BuildHelper {
 	}
 
 	public static void main(String[] args) {
-
 		try {
 			new BuildHelper().build();
 			System.out.println("build success.");
@@ -170,15 +169,22 @@ public class BuildHelper {
 			Map<Object, Object> tableMap = new HashMap<Object, Object>();
 			tableMap.put("tableName", table);
 			tableMap.put("modelName", modelName);
-			StringBuffer path=new StringBuffer();
+			StringBuffer path = new StringBuffer();
+			StringBuffer lock = new StringBuffer();
 			char [] chars= modelName.toCharArray();
 			for (char c :chars ) {
 			    if(Character.isUpperCase(c)){
 					path.append("/");
+					if(lock.length() > 0){
+						lock.append("_");
+					}
 				}
 				path.append(c);
+				lock.append(c);
 			}
+			System.out.println("lock:"+lock);
 			tableMap.put("path",path.toString().toLowerCase());
+			tableMap.put("lock",lock.toString().toUpperCase());
 
 			List<Map<Object, Object>> columns = new ArrayList<Map<Object, Object>>();
 
