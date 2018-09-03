@@ -1,6 +1,6 @@
 package ${package}.service.impl;
 
-import ${package}.model.${modelName};
+import ${package}.model.${modelName}Model;
 import ${package}.dao.${modelName}Dao;
 import ${package}.service.${modelName}Service;
 import ${package}.util.enums.${modelName}StatEnum;
@@ -37,12 +37,12 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
 
 
     @Override
-    public List<${modelName}> getList(${modelName} ${modelName?uncap_first}) {
+    public List<${modelName}> getList(${modelName}Model ${modelName?uncap_first}) {
         return ${dao}.getList(${modelName?uncap_first});
     }
 
     @Override
-    public Object insert(${modelName} ${modelName?uncap_first}, UserDTO user) {
+    public Object insert(${modelName}Model ${modelName?uncap_first}, UserDTO user) {
         Date current = new Date();
         Long id = UniqueCodeUtils.getUniqueCode(UniqueCodeUtils.BUSTYPE_${modelName?upper_case}_ID);
         String code = UniqueCodeUtils.getBussIncrCode(UniqueCodeUtils.BUSTYPE_${modelName?upper_case}_CODE);
@@ -69,8 +69,8 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
     }
 
     @Override
-    public Object update(${modelName} ${modelName?uncap_first}, UserDTO user) {
-        ${modelName} db${modelName?uncap_first} = ${dao}.getOneById(${modelName?uncap_first}.getId());
+    public Object update(${modelName}Model ${modelName?uncap_first}, UserDTO user) {
+        ${modelName}Model db${modelName?uncap_first} = ${dao}.getOneById(${modelName?uncap_first}.getId());
         if (db${modelName?uncap_first} == null) {
             return Res.err("修改失败");
         }
@@ -93,8 +93,8 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
     }
 
     @Override
-    public Object delete(${modelName} ${modelName?uncap_first}, UserDTO user) {
-        ${modelName} db${modelName?uncap_first} = ${dao}.getOneById(${modelName?uncap_first}.getId());
+    public Object delete(${modelName}Model ${modelName?uncap_first}, UserDTO user) {
+        ${modelName}Model db${modelName?uncap_first} = ${dao}.getOneById(${modelName?uncap_first}.getId());
         if (db${modelName?uncap_first} == null) {
             return Res.err("删除失败");
         }
@@ -117,7 +117,7 @@ public class ${modelName}ServiceImpl implements ${modelName}Service {
     }
 
     @Override
-    public ${modelName} getOne(${modelName} ${modelName?uncap_first}){
+    public ${modelName}Model getOne(${modelName}Model ${modelName?uncap_first}){
         return ${dao}.getOne(${modelName?uncap_first});
     }
 }

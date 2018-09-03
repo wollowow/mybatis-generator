@@ -14,7 +14,7 @@ import com.hshc.ws.util.enums.DeleteStatEnum;
 import com.github.pagehelper.PageInfo;
 import ${package}.common.hbase.history.OperationHBaseClient;
 import ${package}.common.redis.LockRedisClient;
-import ${package}.model.${modelName};
+import ${package}.model.${modelName}Model;
 import ${package}.service.${modelName}Service;
 import ${package}.util.Constants;
 import ${package}.util.RedisNamespaceConstants;
@@ -68,7 +68,7 @@ public class ${modelName}Controller{
      **/
     @RequestMapping("insert")
     @ResponseBody
-    public Object insert(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object insert(HttpServletRequest req,${modelName}Model ${modelName?uncap_first}) {
         boolean locked = false;
         String lockKey = "${modelName?uncap_first}:insert:" + System.currentTimeMillis();
 
@@ -101,7 +101,7 @@ public class ${modelName}Controller{
      **/
     @RequestMapping("update")
     @ResponseBody
-    public Object update(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object update(HttpServletRequest req,${modelName}Model ${modelName?uncap_first}) {
         if (${modelName?uncap_first}.getId() == null || ${modelName?uncap_first}.getVersion() == null) {
             return Res.err();
         }
@@ -138,7 +138,7 @@ public class ${modelName}Controller{
       **/
     @RequestMapping("list")
     @ResponseBody
-    public Object getList(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object getList(HttpServletRequest req,${modelName}Model ${modelName?uncap_first}) {
         ${modelName?uncap_first}.setDelFlag(DeleteStatEnum.NO.getCode());
         PageInfo pageInfo = new PageInfo<>(${service}.getList(${modelName?uncap_first}));
         pageInfo.setList(ExtFieldUtil.genConvertList(pageInfo.getList()));
@@ -147,7 +147,7 @@ public class ${modelName}Controller{
 
     @RequestMapping("delete")
     @ResponseBody
-    public Object delete(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object delete(HttpServletRequest req,${modelName}Model ${modelName?uncap_first}) {
         if (${modelName?uncap_first}.getId() == null || ${modelName?uncap_first}.getVersion() == null) {
             return Res.err();
         }
