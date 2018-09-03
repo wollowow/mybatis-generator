@@ -8,6 +8,7 @@
 	"tableMapping":{
 		"t_repair_project_part_name":{
 			"name":"RepairProjectPartName",
+			"beanName": "RepairProjectPartNameModel",
 			"remark":"配件品牌"
 		}
 	},

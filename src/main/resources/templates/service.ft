@@ -1,7 +1,7 @@
 package ${package}.service;
 
 import com.hshc.commonbase.dto.base.UserDTO;
-import ${package}.model.${modelName}Model;
+import ${package}.model.${entityName};
 import java.util.List;
 
 /**
@@ -12,13 +12,13 @@ import java.util.List;
  */
 public interface ${modelName}Service {
 
-    List<${modelName}> getList(${modelName}Model ${modelName?uncap_first});
+    List<${modelName}> getList(${entityName} ${modelName?uncap_first});
 
-    Object insert(${modelName}Model ${modelName?uncap_first}, UserDTO user);
+    Object insert(${entityName} ${modelName?uncap_first}, UserDTO user);
 
-    Object update(${modelName}Model ${modelName?uncap_first}, UserDTO user);
+    Object update(${entityName} ${modelName?uncap_first}, UserDTO user);
 
-    Object delete(${modelName}Model ${modelName?uncap_first}, UserDTO user);
+    Object delete(${entityName} ${modelName?uncap_first}, UserDTO user);
 
-    ${modelName}Model getOne(${modelName}Model ${modelName?uncap_first});
+    ${entityName} getOne(${entityName} ${modelName?uncap_first});
 }

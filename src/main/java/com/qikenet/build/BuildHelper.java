@@ -96,6 +96,7 @@ public class BuildHelper {
 		// 通过Template可以将模板文件输出到相应的流
 		try {
 			Template temp = this.getTemplate(template.get("template"));
+			System.out.println(temp.getName());
 
 			// 将流输出到文件
 			File dir = new File(template.get("outPath") + "/");
@@ -104,7 +105,9 @@ public class BuildHelper {
 			}
 
 			String filePath = String.valueOf(tableMap.get("basePath")) + dir.getPath() + "/" + tableMap.get("modelName") + template.get("outSuffix");
-
+			if(temp.getName().startsWith("entity")){
+				filePath = String.valueOf(tableMap.get("basePath")) + dir.getPath() + "/" + tableMap.get("entityName") + template.get("outSuffix");
+			}
 			File target = new File(filePath);
 			File dirTarget=new File(target.getParent());
 			if(!dirTarget.exists()){
@@ -163,12 +166,14 @@ public class BuildHelper {
 			System.out.println("table : " + table);
 			Map<String, String> tableInfo = (Map<String, String>) tableMapping.get(table);
 			String modelName = tableInfo.get("name");
+			String entityName = tableInfo.get("beanName");
 
 			String tableRemark = tableInfo.get("remark");
 			System.out.println("tableRemark : " + tableRemark);
 			Map<Object, Object> tableMap = new HashMap<Object, Object>();
 			tableMap.put("tableName", table);
 			tableMap.put("modelName", modelName);
+			tableMap.put("entityName",entityName);
 			StringBuffer path = new StringBuffer();
 			StringBuffer lock = new StringBuffer();
 			char [] chars= modelName.toCharArray();

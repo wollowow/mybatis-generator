@@ -1,7 +1,7 @@
 package ${package}.dao;
 
 import java.util.List;
-import ${package}.model.${modelName}Model;
+import ${package}.model.${entityName};
 
 /**
 * ${modelRemark}
@@ -9,7 +9,7 @@ import ${package}.model.${modelName}Model;
 * @project ${project}
 * @date  ${now?datetime}
 */
-public interface ${modelName}Dao extends BaseDao<${modelName}Model>{
+public interface ${modelName}Dao extends BaseDao<${entityName}>{
 
 }
 

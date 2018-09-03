@@ -20,7 +20,7 @@ import ${p};
 @Data
 @NoArgsConstructor
 @Alias("${modelName}")
-public class ${modelName}Modal extends PageParamVo implements Serializable {
+public class ${entityName} extends PageParamVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -36,6 +36,6 @@ public class ${modelName}Modal extends PageParamVo implements Serializable {
 	@Override
 	public String toString() {
 		<#assign sign=false>
-		return "${modelName} [<#list columns as item><#if sign>,</#if>${item.fieldName}=" + ${item.fieldName} + "<#assign sign=true></#list>]";
+		return "${entityName} [<#list columns as item><#if sign>,</#if>${item.fieldName}=" + ${item.fieldName} + "<#assign sign=true></#list>]";
 	}
 }
