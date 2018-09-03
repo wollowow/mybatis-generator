@@ -32,29 +32,7 @@ public class ${modelName}Modal extends PageParamVo implements Serializable {
 	private ${item.typeName} ${item.fieldName};
 	
 	</#list>
-	//set 和 get方法
-	
-	<#list columns as item>
-	/**
-	 * ${item.remark}
-	 *
-	 * @param ${item.fieldName}
-	 */
-	public void set${item.fieldName?cap_first}(${item.typeName} ${item.fieldName}) {
-		this.${item.fieldName} = ${item.fieldName};
-	}
-	
-	/**
-	 * ${item.remark}
-	 *
-	 * @return ${item.typeName}
-	 */
-	public ${item.typeName} get${item.fieldName?cap_first}() {
-		return this.${item.fieldName};
-	}
-	
-	</#list>
-	
+
 	@Override
 	public String toString() {
 		<#assign sign=false>
