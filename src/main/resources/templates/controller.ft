@@ -78,7 +78,7 @@ public class ${modelName}Controller{
                 return Res.err("请稍后重试");
             }
 
-            // 其它校验
+            //TODO 其他验证
 
             return ${service}.insert(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
@@ -115,7 +115,7 @@ public class ${modelName}Controller{
                 return Res.err("请稍后重试");
             }
 
-            // 其它校验
+            //TODO 其他验证
 
             return ${service}.update(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
@@ -160,6 +160,7 @@ public class ${modelName}Controller{
             if (!locked) {
                 return Res.err("请稍后重试");
             }
+            //TODO 其他验证
 
             return ${service}.delete(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
