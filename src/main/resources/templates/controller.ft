@@ -120,7 +120,7 @@ public class ${modelName}Controller{
             return ${service}.update(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
             LogUtil.getLog(${modelName}Controller.class).error("修改失败", e);
-            return Res.err("单据状态已发生变化，请重新打开页面！");
+            return Res.err("修改失败！");
         } finally {
             try {
                 if (locked) {
@@ -164,7 +164,7 @@ public class ${modelName}Controller{
             return ${service}.delete(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
             LogUtil.getLog(${modelName}Controller.class).error("删除失败", e);
-            return Res.err("单据状态已发生变化，请重新打开页面！");
+            return Res.err("删除失败！");
         } finally {
             try {
                 if (locked) {
