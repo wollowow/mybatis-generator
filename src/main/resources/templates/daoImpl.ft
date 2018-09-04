@@ -44,4 +44,4 @@ public class ${modelName}DaoImpl extends CommonBaseDao implements ${modelName}Da
         return this.update("${package}.dao.${modelName}Dao.delete", ${modelName?uncap_first});
     }
 
-    }
+}

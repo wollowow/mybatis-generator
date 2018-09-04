@@ -12,5 +12,3 @@ import ${package}.model.${entityName};
 public interface ${modelName}Dao extends BaseDao<${entityName}>{
 
 }
-
-
