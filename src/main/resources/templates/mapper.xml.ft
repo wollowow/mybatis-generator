@@ -8,7 +8,7 @@
         <#list columns as item><#if sign==true>,</#if>${item.name}<#assign sign=true></#list>
     </sql>
 
-    < id="Where_Clause">
+    <sql id="Where_Clause">
         <where>
             1 = 1
             <#list columns as item>
