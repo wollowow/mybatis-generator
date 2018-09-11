@@ -1,18 +1,18 @@
 {
 	"package":"com.hshc.ws",
 	"jdbc":{
-		"url":"jdbc:mysql://127.0.0.1:3306/hshc_ws?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull",
-		"username":"root",
-		"password":"root"
+		"url":"jdbc:mysql://192.168.100.30:3306/hshc_pss?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull",
+		"username":"test",
+		"password":"HSHCtest#2018"
 	},
 	"tableMapping":{
-		"t_part_category":{
-			"name":"PartCategory",
-			"remark":"配件分类"
+		"t_bill_settlement":{
+			"name":"BillSettlement",
+			"remark":"结算单"
 		}
 	},
-	"author":"zhengyi.wang",
-	"basePath":"D:/model/",
+	"author":"liumenghua",
+	"basePath":"/Users/menghualiu/Desktop/document/codes/",
 	"templates":[{
 		"template":"types.ft",
 		"outSuffix":"Types.txt",
