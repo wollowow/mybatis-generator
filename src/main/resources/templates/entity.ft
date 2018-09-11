@@ -1,4 +1,4 @@
-package ${package}.entity;
+package ${package}.model;
 
 import java.io.Serializable;
 import com.hshc.ws.util.ContrastField;
@@ -20,7 +20,7 @@ import ${p};
 @Data
 @NoArgsConstructor
 @Alias("${modelName}")
-public class ${modelName} extends PageParamVo implements Serializable {
+public class ${entityName} extends PageParamVo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -32,32 +32,10 @@ public class ${modelName} extends PageParamVo implements Serializable {
 	private ${item.typeName} ${item.fieldName};
 	
 	</#list>
-	//set 和 get方法
-	
-	<#list columns as item>
-	/**
-	 * ${item.remark}
-	 *
-	 * @param ${item.fieldName}
-	 */
-	public void set${item.fieldName?cap_first}(${item.typeName} ${item.fieldName}) {
-		this.${item.fieldName} = ${item.fieldName};
-	}
-	
-	/**
-	 * ${item.remark}
-	 *
-	 * @return ${item.typeName}
-	 */
-	public ${item.typeName} get${item.fieldName?cap_first}() {
-		return this.${item.fieldName};
-	}
-	
-	</#list>
-	
+
 	@Override
 	public String toString() {
 		<#assign sign=false>
-		return "${modelName} [<#list columns as item><#if sign>,</#if>${item.fieldName}=" + ${item.fieldName} + "<#assign sign=true></#list>]";
+		return "${entityName} [<#list columns as item><#if sign>,</#if>${item.fieldName}=" + ${item.fieldName} + "<#assign sign=true></#list>]";
 	}
 }

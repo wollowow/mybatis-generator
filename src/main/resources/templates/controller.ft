@@ -14,7 +14,7 @@ import com.hshc.ws.util.enums.DeleteStatEnum;
 import com.github.pagehelper.PageInfo;
 import ${package}.common.hbase.history.OperationHBaseClient;
 import ${package}.common.redis.LockRedisClient;
-import ${package}.model.${modelName};
+import ${package}.model.${entityName};
 import ${package}.service.${modelName}Service;
 import ${package}.util.Constants;
 import ${package}.util.RedisNamespaceConstants;
@@ -34,7 +34,7 @@ import com.hshc.framework.redis.cmd.LockCmd;
 @RequestMapping("${modelName?uncap_first}")
 public class ${modelName}Controller{
 
-private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants.${lock}_LOCK_NAMESPACE);
+    private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants.${lock}_LOCK_NAMESPACE);
 
     <#if modelName??>
         <#assign  lower= modelName?uncap_first >
@@ -68,7 +68,7 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
      **/
     @RequestMapping("insert")
     @ResponseBody
-    public Object insert(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object insert(HttpServletRequest req,${entityName} ${modelName?uncap_first}) {
         boolean locked = false;
         String lockKey = "${modelName?uncap_first}:insert:" + System.currentTimeMillis();
 
@@ -78,7 +78,7 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
                 return Res.err("请稍后重试");
             }
 
-            // 其它校验
+            //TODO 其他验证
 
             return ${service}.insert(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
@@ -101,7 +101,7 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
      **/
     @RequestMapping("update")
     @ResponseBody
-    public Object update(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object update(HttpServletRequest req,${entityName} ${modelName?uncap_first}) {
         if (${modelName?uncap_first}.getId() == null || ${modelName?uncap_first}.getVersion() == null) {
             return Res.err();
         }
@@ -115,12 +115,12 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
                 return Res.err("请稍后重试");
             }
 
-            // 其它校验
+            //TODO 其他验证
 
             return ${service}.update(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
             LogUtil.getLog(${modelName}Controller.class).error("修改失败", e);
-            return Res.err("单据状态已发生变化，请重新打开页面！");
+            return Res.err("修改失败！");
         } finally {
             try {
                 if (locked) {
@@ -138,7 +138,7 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
       **/
     @RequestMapping("list")
     @ResponseBody
-    public Object getList(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object getList(HttpServletRequest req,${entityName} ${modelName?uncap_first}) {
         ${modelName?uncap_first}.setDelFlag(DeleteStatEnum.NO.getCode());
         PageInfo pageInfo = new PageInfo<>(${service}.getList(${modelName?uncap_first}));
         pageInfo.setList(ExtFieldUtil.genConvertList(pageInfo.getList()));
@@ -147,7 +147,7 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
 
     @RequestMapping("delete")
     @ResponseBody
-    public Object delete(HttpServletRequest req,${modelName} ${modelName?uncap_first}) {
+    public Object delete(HttpServletRequest req,${entityName} ${modelName?uncap_first}) {
         if (${modelName?uncap_first}.getId() == null || ${modelName?uncap_first}.getVersion() == null) {
             return Res.err();
         }
@@ -160,11 +160,12 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
             if (!locked) {
                 return Res.err("请稍后重试");
             }
+            //TODO 其他验证
 
             return ${service}.delete(${modelName?uncap_first}, UserUtil.getUser(req));
         } catch (Exception e) {
             LogUtil.getLog(${modelName}Controller.class).error("删除失败", e);
-            return Res.err("单据状态已发生变化，请重新打开页面！");
+            return Res.err("删除失败！");
         } finally {
             try {
                 if (locked) {
@@ -176,6 +177,3 @@ private final LockCmd LOCK = LockRedisClient.getInstance(RedisNamespaceConstants
         }
     }
 }
-
-
-
