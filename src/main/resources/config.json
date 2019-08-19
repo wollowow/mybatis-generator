@@ -1,10 +1,10 @@
 {
   "package":"com.hrbank",
   "jdbc":{
-    "url":"jdbc:mysql://62.234.116.161:3306/operation_manage?useUnicode=true&characterEncodingUTF8utoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull"
+    "url":"jdbc:mysql://host:port/dbname?useUnicode=true&characterEncodingUTF8utoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull"
   ,
-    "username":"root",
-    "password":"angla"
+    "username":"username",
+    "password":"password"
   },
   "tableMapping":{
     "t_activity_task":{
