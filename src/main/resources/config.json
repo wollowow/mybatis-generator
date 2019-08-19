@@ -1,10 +1,10 @@
 {
   "package":"com.hrbank",
   "jdbc":{
-    "url":"jdbc:mysql://host:port/dbname?useUnicode=true&characterEncodingUTF8utoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull"
+    "url":"jdbc:mysql://62.234.116.161:3306/operation_manage?useUnicode=true&characterEncodingUTF8utoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull"
   ,
-    "username":"username",
-    "password":"password"
+    "username":"root",
+    "password":"angla"
   },
   "tableMapping":{
     "t_activity_task":{
@@ -16,10 +16,6 @@
   "author":"liumenghua",
   "basePath":"/Users/a/Desktop/document/codes/",
   "templates":[{
-    "template":"types.ft",
-    "outSuffix":"Types.txt",
-    "outPath":"com"
-  },{
     "template":"entity.ft",
     "outSuffix":".java",
     "outPath":"com",

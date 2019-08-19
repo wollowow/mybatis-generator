@@ -3,9 +3,6 @@ package ${package}.service.impl;
 import ${package}.entity.${entityName};
 import ${package}.dao.${modelName}Mapper;
 import ${package}.service.${modelName}Service;
-import com.hshc.basetools.log.LogUtil;
-import com.hshc.basetools.model.Res;
-import com.hshc.commonbase.dto.base.UserDTO;
 
 import java.util.List;
 import java.lang.Long;
