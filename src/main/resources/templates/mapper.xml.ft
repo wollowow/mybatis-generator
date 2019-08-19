@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${package}.dao.${modelName}Dao" >
+<mapper namespace="${package}.mapper.${modelName}Mapper" >
     <#assign delFlag = false>
     <#assign versionFlag = false>
     <sql id="column_all" >
@@ -32,81 +32,4 @@
             </#if>
         </where>
     </sql>
-
-    <select id="getList" resultType="${modelName}" parameterType="${modelName}">
-        SELECT
-          <include refid="column_all"/>
-        FROM ${tableName}
-        <include refid="Where_Clause"/>
-        ORDER BY id DESC
-    </select>
-
-    <select id="getOneById" resultType="${modelName}" parameterType="java.lang.Long">
-        SELECT
-        <include refid="column_all"/>
-        FROM ${tableName}
-        WHERE
-        id = ${"#"}{id}
-        limit 0,1
-    </select>
-
-    <select id="getOne" resultType="${modelName}" parameterType="${modelName}">
-        SELECT
-        <include refid="column_all"/>
-        FROM ${tableName}
-        <include refid="Where_Clause"/>
-    </select>
-
-    <insert id="insert" parameterType="${modelName}" >
-        insert into ${tableName} (
-        <#list columns as item>${item.name}<#if item_index lt columns?size-1 >,</#if><#if item_index gt 7><#if item_index%8==0>
-        </#if></#if></#list>)
-        values (<#assign sign=false><#list columns as item><#if sign>,</#if>${"#"}{${item.fieldName}}<#assign sign=true><#if item_index gt 7><#if item_index%8==0>
-        </#if></#if></#list>)
-    </insert>
-
-
-    <update id="update" parameterType="${modelName}" >
-        update ${tableName}
-        <set>
-            <#list columns as item>
-                <#if item.fieldName != "version" && item.fieldName != 'createEmpId' && item.fieldName != 'createEmp' && item.fieldName != 'createTime' && item.fieldName != 'id'>
-                    <#if item.type == "VARCHAR" || item.type == "CHAR" || item.type == "TEXT" || item.type=="">
-            <if test="${item.fieldName} != null and ${item.fieldName} != ''" >
-                      <#else>
-            <if test="${item.fieldName} != null" >
-                    </#if>
-                ${item.name} = ${"#"}{${item.fieldName}},
-            </if>
-            <#elseif item.fieldName == "version">
-            <#assign versionFlag = true>
-                 </#if>
-            </#list>
-            <#if versionFlag==true>
-            version = version + 1,
-            </#if>
-            id = ${"#"}{id}
-        </set>
-        where ${idField} = ${"#"}{${idFieldName}}
-        <#if versionFlag==true>
-        AND version = ${"#"}{version}
-        </#if>
-    </update>
-
-    <update id="delete" parameterType="${modelName}">
-        UPDATE ${tableName}
-        SET
-            del_flag = ${"#"}{delFlag}
-            <#if versionFlag==true>
-            ,version = version + 1
-            </#if>
-        WHERE
-        id = ${"#"}{id}
-        <#if versionFlag==true>
-        AND version = ${"#"}{version}
-         </#if>
-        <#if delFlag==true>
-        AND del_flag = 0
-        </#if>
-    </update>
 </mapper>

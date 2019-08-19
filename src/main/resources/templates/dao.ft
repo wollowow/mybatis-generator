@@ -9,6 +9,6 @@ import ${package}.model.${entityName};
 * @project ${project}
 * @date  ${now?datetime}
 */
-public interface ${modelName}Dao extends BaseDao<${entityName}>{
+public interface ${modelName?substring(1)}Mapper extends BaseMapper<${entityName}>{
 
 }

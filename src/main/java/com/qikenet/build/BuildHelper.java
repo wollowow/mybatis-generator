@@ -103,8 +103,9 @@ public class BuildHelper {
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-
-			String filePath = String.valueOf(tableMap.get("basePath")) + dir.getPath() + "/" + tableMap.get("modelName") + template.get("outSuffix");
+			String modelName = tableMap.get("modelName").toString();
+			modelName = modelName.substring(1);
+			String filePath = String.valueOf(tableMap.get("basePath")) + dir.getPath() + "/" + modelName + template.get("outSuffix");
 			if(temp.getName().startsWith("entity")){
 				filePath = String.valueOf(tableMap.get("basePath")) + dir.getPath() + "/" + tableMap.get("entityName") + template.get("outSuffix");
 			}
