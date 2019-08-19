@@ -1,2 +1,2 @@
-# hshc-mybatis-generator
-## hshc-mybatis-generator
+# mybatis-generator
+## mybatis-generator
